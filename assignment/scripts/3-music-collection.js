@@ -6,11 +6,12 @@ let myCollection = [];
 console.log(myCollection);
 
 
-function addToCollection(arr, name, artist, year) {
+function addToCollection(arr, name, artist, year, track) {
   let newAlbum = {
     name: name,
     artist: artist,
     year: year,
+    tracks: track,
   }// end object 
     console.log(newAlbum);
     arr.push(newAlbum);
@@ -18,20 +19,40 @@ function addToCollection(arr, name, artist, year) {
 }// end function
 
 
-addToCollection(myCollection, `Enema of the State`, `Blink-182`, 1999);
-addToCollection(myCollection, `Nothing Personal`, `All Time Low`, 2009);
-addToCollection(myCollection, `The Young and the Hopeless`, `Good Charlotte`, 2002);
-addToCollection(myCollection, `Wake Up, Sunshine`, `All Time Low`, 2020);
-addToCollection(myCollection, `All Killer No Filler`, `Sum 41`, 2001);
-addToCollection(myCollection, `American Idiot`, `Green Day`, 2004);
+addToCollection(myCollection, `Enema of the State`, `Blink-182`, 1999, [[`Mutt`, `3:24`], [`All the Small Things`, `2:47`], [`Aliens Exist`, `3:13`]]);
+addToCollection(myCollection, `Nothing Personal`, `All Time Low`, 2009, [[`Weightless`, `3:18`], [`Stella`, `3:24`], [`Therapy`, `3:44`]]);
+addToCollection(myCollection, `The Young and the Hopeless`, `Good Charlotte`, 2002, [[`The Anthem`, `2:55`], [`Girls & Boys`, `3:03`], [`Lifestyles of the Rich and the Famous`, `3:10`]]);
+addToCollection(myCollection, `Wake Up, Sunshine`, `All Time Low`, 2020, [[`Wake Up, Sunshine`, `3:16`], [`Monsters`, `2:54`], [`Trouble Is`, `2:27`]]);
+addToCollection(myCollection, `All Killer No Filler`, `Sum 41`, 2001, [[`Fat Lip`, `2:58`], [`In Too Deep`, `3:27`], [`Summer`, `2:49`]]);
+addToCollection(myCollection, `American Idiot`, `Green Day`, 2004, [[`American Idiot`, `2:54`], [`Boulevard of Broken Dreams`, `8:14`], [`When September Ends`, `4:46`]]);
 
 console.log(myCollection);
 
 
+//   - Update the `showCollection` function to display the list of tracks for each album with its name and duration.
+//   - ```
+//     TITLE by ARTIST, published in YEAR:
+//         1. NAME: DURATION
+//         2. NAME: DURATION
+//         3. NAME: DURATION
+//     TITLE by ARTIST, published in YEAR:
+//         1. NAME: DURATION
+//         2. NAME: DURATION
+
 function showCollection(arr) {
-  for(let i=0; i<arr.length; i++){
-    console.log(`Album Title: ${arr[i].name} by ${arr[i].artist}, published in ${arr[i].year}.`);
-  }// end loop
+  for(let item of arr){
+    console.log(`New ${item.name} by ${item.artist} published in ${item.year}.`);
+    for(let i=0; i<item.tracks.length; i++){
+      console.log(`Track ${i+1} - ${item.tracks[i][0]}: ${item.tracks[i][1]}.`);
+    }
+  }// end for loop
+
+  // not for loop example
+  // for(let i=0; i<arr.length; i++){
+  //   console.log(`Album Title: ${arr[i].name} by ${arr[i].artist}, published in ${arr[i].year}.`);
+  // }// end loop
+
+
 }// end function
 
 showCollection(myCollection);
@@ -72,6 +93,7 @@ console.log(findByArtist(myCollection, `Green Day`));
 //     - If there is no search object, an empty search object, or missing `artist`/`year` data provided as input, 
 //     `return` **all albums** from the `collection` being searched.
 
+// extended loop function
 function search(arr = 0, artist = 0, year = 0) {
   let newSearch = [];
   for(let i=0; i<arr.length; i++){
@@ -90,6 +112,10 @@ function search(arr = 0, artist = 0, year = 0) {
     return newSearch;
 }// end function
 
+// for loop function
+
+
+
 console.log(search(myCollection, `All Time Low`, 2009));
 console.log(search(myCollection, `Ray Charles`, 1957));
 console.log(search(myCollection, `All Time Low`));
@@ -102,20 +128,33 @@ console.log(search(myCollection, `All Time Low`));
 // - Add an array of `tracks` to each of your album objects. Each track should have a `name` and `duration`. You will need to 
 //   update the functions to support this new property:
 //   - Update the `addToCollection` function to also take an input parameter for the array of tracks.
-//   - Update the `showCollection` function to display the list of tracks for each album with its name and duration.
-//   - ```
-//     TITLE by ARTIST, published in YEAR:
-//         1. NAME: DURATION
-//         2. NAME: DURATION
-//         3. NAME: DURATION
-//     TITLE by ARTIST, published in YEAR:
-//         1. NAME: DURATION
-//         2. NAME: DURATION
 //     ```
 //   - Update `search` to allow an optional `trackName` search criteria. 
 //     - IF the search object has a `trackName` property, only search for that, *ignoring* any `artist` or `year` properties.
 
 // > Make sure to test all your code!
+
+// add additional tracks function
+
+function addAlbumTracks(arr, albName, trackName, duration){
+  for(let item of arr){
+    if( item.name === albName){
+      console.log(`Adding tracks to ${item.name} by ${item.artist}.`);
+      item.tracks.push([trackName, duration]);
+    }// end if statement
+  }// end for loop
+}//end addAlbumTracks
+
+
+console.log(myCollection);
+
+
+// addToCollection(myCollection, `Nothing Personal`, `All Time Low`, 2009);
+// addToCollection(myCollection, `The Young and the Hopeless`, `Good Charlotte`, 2002);
+// addToCollection(myCollection, `Wake Up, Sunshine`, `All Time Low`, 2020);
+// addToCollection(myCollection, `All Killer No Filler`, `Sum 41`, 2001);
+// addToCollection(myCollection, `American Idiot`, `Green Day`, 2004);
+// addToCollection(myCollection, `Love Drunk`, `Boys Like Girls`, 2009);
 
 
 
