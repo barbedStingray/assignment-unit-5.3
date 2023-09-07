@@ -1,4 +1,4 @@
-# Unit 5, Part 3: Music Collection
+<!-- # Unit 5, Part 3: Music Collection
 
 This unit, we'll be exploring objects by creating an application to help maintain a record collection. We will be creating objects using `object literal` syntax.
 
@@ -13,7 +13,7 @@ Update the `3-music-collection.js` file to do the following:
 
 > While working through the features below, make sure to commit after you complete a task! Your commit message should reflect what you added or changed since the previous commit.
 
-### Required Features
+### Required Features -->
 
 - Beneath the `primesCollection`, create a variable `myCollection` that starts as an empty array.
   - Please do not modify the `primesCollection` variable in any way.
@@ -32,7 +32,7 @@ Update the `3-music-collection.js` file to do the following:
     - Add the new object to the end of the `collection` array
     - `return` the newly created object
 
-- Use and Test the `addToCollection` function:
+<!-- - Use and Test the `addToCollection` function:
   - Add 6 albums to **your** collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
   - `console.log`` each album as added using the function's returned value.
   - After all are added, console.log the `collection` array.
@@ -50,14 +50,14 @@ Update the `3-music-collection.js` file to do the following:
   - Loop through the `collection` and add any album objects with a matching artist to the array.
   - Return the array with the matching results. (If no results are found, an empty array should be returned.)
 
-- Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are returned.
+- Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are returned. -->
 
 > When testing your functions, write all tests in the JavaScript file!
 
 
 ### Stretch Goal
 
-- Create a function called `search` that will allow for searching by `artist` **and** `year`. This function should:
+<!-- - Create a function called `search` that will allow for searching by `artist` **and** `year`. This function should:
   - Take in a `collection` parameter.
   - Take in a `searchCriteria` parameter. Create your solution based on a *search object* that has these properties:
     - ```
@@ -66,7 +66,7 @@ Update the `3-music-collection.js` file to do the following:
   - The returned output from `search` should meet these requirements:
     - Return a new array of all items in the `collection` matching **all** of the search criteria.
     - If no results are found, return an empty array.
-    - If there is no search object, an empty search object, or missing `artist`/`year` data provided as input, `return` **all albums** from the `collection` being searched.
+    - If there is no search object, an empty search object, or missing `artist`/`year` data provided as input, `return` **all albums** from the `collection` being searched. -->
 
 ### Extra Stretchy Stretch Goals
 
