@@ -67,6 +67,7 @@ showCollection(myCollection);
 // - Test the `findByArtist` function. Make sure to test with an artist you know is in the collection, as well as an artist you know is not in your collection. Check that for artists with multiple matches, all are returned.
 
 function findByArtist(arr, string) {
+  console.log(`in findByArtist`);
   let newCollection = [];
   for(let i=0; i<arr.length; i++){
     if(arr[i].artist == string){
@@ -93,32 +94,72 @@ console.log(findByArtist(myCollection, `Green Day`));
 //     - If there is no search object, an empty search object, or missing `artist`/`year` data provided as input, 
 //     `return` **all albums** from the `collection` being searched.
 
+//   - Update `search` to allow an optional `trackName` search criteria. 
+//     - IF the search object has a `trackName` property, only search for that, *ignoring* any `artist` or `year` properties.
+
+
 // extended loop function
-function search(arr = 0, artist = 0, year = 0) {
-  let newSearch = [];
-  for(let i=0; i<arr.length; i++){
-    if(arr[i].artist === artist && arr[i].year === year){
-      console.log(`perfect match!`)
-      newSearch.push(arr[i]);
-    }// end if perfect statement
-    else if(arr === 0 || artist === 0 || year === 0){
-      console.log(`missing data in search`)
-      return myCollection;
-    }// end empty if statement
-    else {
-      console.log(`no results found!`);
-    }// end no results if
-  }// end for loop
-    return newSearch;
-}// end function
+// function search(arr = 0, artist = 0, year = 0) {
+//   console.log(`in search`);
+//   let newSearch = [];
+//   for(let i=0; i<arr.length; i++){
+//     if(arr[i].artist === artist && arr[i].year === year){
+//       console.log(`perfect match!`)
+//       newSearch.push(arr[i]);
+//     }// end if perfect statement
+//     else if(arr === 0 || artist === 0 || year === 0){
+//       console.log(`missing data in search`)
+//       return myCollection;
+//     }// end empty if statement
+//     else {
+//       console.log(`no results found!`);
+//     }// end no results if
+//   }// end for loop
+//     return newSearch;
+// }// end function
 
-// for loop function
+// for loop function with stretch
+function search(array = 0, artist = 0, year = 0, trackName = 0){
+  console.log(`in for search loop`);
+    let newSearch = [];
+      
+    for(let props of array){
+        
+      // trackname search
+        if(trackName !== 0){
+          console.log(`track name searching`);
+          for(let item of array){
+            for(let songs of item.tracks){
+              if(songs[0] === trackName){
+              console.log(`track name match!`);
+              return songs;
+              }// end first for loop
+            }// end match name
+          }// end for loop for trackname
+        } // end search by track name
+        
+          else if( props.artist === artist && props.year === year){
+            console.log(`perfect match!`);
+            newSearch.push(props);
+            console.log(newSearch);
+          } // end perfect artist and year match
+          else if(array === 0 || artist ===0 || year === 0){
+            console.log(`missing data in search`);
+            return myCollection;
+          } // end missing data
+          else {
+            console.log(`no results found`);
+          } // end no results if
+      }// end for loop
+        return newSearch;
+  }// end function
 
 
 
-console.log(search(myCollection, `All Time Low`, 2009));
+console.log(search(myCollection, `All Time Low`, 2009, `In Too Deep`));
 console.log(search(myCollection, `Ray Charles`, 1957));
 console.log(search(myCollection, `All Time Low`));
+console.log(search(myCollection, `Wake Up, Sunshine`));
 
 
 // ### Extra Stretchy Stretch Goals
@@ -129,8 +170,6 @@ console.log(search(myCollection, `All Time Low`));
 //   update the functions to support this new property:
 //   - Update the `addToCollection` function to also take an input parameter for the array of tracks.
 //     ```
-//   - Update `search` to allow an optional `trackName` search criteria. 
-//     - IF the search object has a `trackName` property, only search for that, *ignoring* any `artist` or `year` properties.
 
 // > Make sure to test all your code!
 
@@ -146,16 +185,7 @@ function addAlbumTracks(arr, albName, trackName, duration){
 }//end addAlbumTracks
 
 
-console.log(myCollection);
-
-
-// addToCollection(myCollection, `Nothing Personal`, `All Time Low`, 2009);
-// addToCollection(myCollection, `The Young and the Hopeless`, `Good Charlotte`, 2002);
-// addToCollection(myCollection, `Wake Up, Sunshine`, `All Time Low`, 2020);
-// addToCollection(myCollection, `All Killer No Filler`, `Sum 41`, 2001);
-// addToCollection(myCollection, `American Idiot`, `Green Day`, 2004);
-// addToCollection(myCollection, `Love Drunk`, `Boys Like Girls`, 2009);
-
+// console.log(myCollection);
 
 
 
